@@ -206,8 +206,8 @@ process.on('uncaughtException', (error) => {
     console.error('❌ Exceção não tratada:', error);
 });
 
-// Inicialização utilizando o Token fornecido por você diretamente no código
-client.login('MTUxMTg1ODM0MjU4OTYyODQ5Nw.Gh8gFF.5ugfk4RwZueVtY1fFT9eSdmOzrHLRHuRNFPwJI')
+// AQUI ESTÁ A PROTEÇÃO: O bot lerá o token de forma oculta pelo painel da sua hospedagem
+client.login(process.env.DISCORD_TOKEN)
     .then(() => {
         console.log('🔑 Login realizado com sucesso!');
     })
