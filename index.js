@@ -189,7 +189,7 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+// Tratamento de erros globais para evitar que o bot caia por completo
 client.on('error', (error) => {
     console.error('❌ Erro no bot:', error);
 });
@@ -205,10 +205,12 @@ process.on('unhandledRejection', (error) => {
 process.on('uncaughtException', (error) => {
     console.error('❌ Exceção não tratada:', error);
 });
-client.login(process.env.DISCORD_TOKEN)
+
+// Inicialização utilizando o Token fornecido por você diretamente no código
+client.login('MTUxMTg1ODM0MjU4OTYyODQ5Nw.Gh8gFF.5ugfk4RwZueVtY1fFT9eSdmOzrHLRHuRNFPwJI')
     .then(() => {
-        console.log('🔑 Login realizado com sucesso');
+        console.log('🔑 Login realizado com sucesso!');
     })
     .catch((err) => {
-        console.error('❌ Falha ao conectar:', err);
+        console.error('❌ Falha crítica ao conectar:', err);
     });
