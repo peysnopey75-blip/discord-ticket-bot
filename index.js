@@ -190,3 +190,32 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+const { Client, GatewayIntentBits, Events } = require('discord.js');
+
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds]
+});
+
+client.once(Events.ClientReady, () => {
+    console.log(`✅ Bot online: ${client.user.tag}`);
+});
+
+client.on(Events.Error, error => {
+    console.error('❌ Erro no bot:', error);
+});
+
+client.on('disconnect', () => {
+    console.log('⚠️ Bot desconectado');
+});
+
+client.on('reconnecting', () => {
+    console.log('🔄 Reconectando...');
+});
+
+client.login(process.env.DISCORD_TOKEN)
+    .then(() => {
+        console.log('🔑 Login realizado com sucesso');
+    })
+    .catch(err => {
+        console.error('❌ Falha no login:', err);
+    });
